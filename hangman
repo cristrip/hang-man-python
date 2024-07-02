@@ -1,0 +1,166 @@
+import random
+
+word4 = ['cuba', 'iran', 'peru', 'iraq', 'mali',
+         'oman', 'chad', 'togo', 'laos'
+         ]  # unfortunately are only these countries with 4 letters
+word5 = ['rusia', 'india', 'japan', 'nepal', 'egypt', 'china', 'libya', 'samoa', 'spain', 'aruba', 'haiti', 'malta',
+         'palau', 'sudan', 'yemen', 'ghana', 'chile', 'congo', 'syria', 'qatar'
+         ]
+word6 = ['mexico', 'turkey', 'greece', 'guinea', 'jordan', 'angola', 'belize', 'bhutan',
+         'brazil', 'canada', 'cyprus', 'gambia', 'guyana', 'israel', 'monaco', 'norway', 'poland',
+         'serbia', 'sweden', 'taiwan',
+         ]
+word7 = ['germany', 'belgium', 'england', 'america', 'romania', 'algeria', 'andorra', 'austria', 'bahamas',
+         'burundi', 'croatia', 'denmark', 'ecuador', 'estonia',
+         'finland', 'georgia', 'hungary', 'iceland', 'morocco', 'ireland', 'moldova'
+         ]
+n = True
+while n:
+    try:
+        print('It is a country .One word')
+        print('How many letters must have the  word?')
+        user1 = int(input('Please enter your choice (4),(5),(6) or (7) :'))
+        if user1 > 7 or user1 < 4:
+            print('Not valid try again')
+        if user1 == 4:
+            ranword = random.choice(word4)
+            break
+        if user1 == 5:
+            ranword = random.choice(word5)
+            break
+        if user1 == 6:
+            ranword = random.choice(word6)
+            break
+        if user1 == 7:
+            ranword = random.choice(word7)
+            break
+    except ValueError:
+        print('Not valid try again')
+word1 = []
+ranuser = []
+ranuser1 = []
+
+word1.append(ranword)
+# word = (word[ranword])
+guessed_letters = len(ranword) * ['_']
+print(' '.join(guessed_letters))
+print(ranword, '<=======It appears only for control')
+while len(ranuser1) <= 11:
+    user = input("Enter your letter: ").lower()
+    if user == ranword:
+        print('You found the word.Bravo')
+        break
+
+    if len(user) != 1 or user not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ':
+        print("That is not one letter, try again.")
+    if user in word1[0] and user in ranuser:
+        print("You already choose this letter try something else!!!")
+    if user in word1[0] and user not in ranuser:
+        for position, letter in enumerate(word1[0]):
+            if letter == user:
+                ranuser.append(user)
+                guessed_letters[position] = letter
+        print(' '.join(guessed_letters))
+        # print(ranuser)
+    b = ''.join(guessed_letters)
+
+    if b == ranword:
+        print('You found the word.Bravo')
+        break
+    if len(user) == 1 and user in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ' and user not in word1[0]:
+        ranuser1.append(user)
+        print("Wrong guess!!!!")
+        from tkinter import *
+
+        root = Tk()
+        canvas = Canvas(root, width=600, height=600)
+        canvas.pack()
+        if len(ranuser1) == 1:
+            canvas.create_line(100, 200, 100, 500)
+        if len(ranuser1) == 2:
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+        if len(ranuser1) == 3:
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+            canvas.create_line(100, 300, 200, 200)
+        if len(ranuser1) == 4:
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+            canvas.create_line(100, 300, 200, 200)
+            canvas.create_line(100, 500, 200, 500)
+        if len(ranuser1) == 5:
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+            canvas.create_line(100, 300, 200, 200)
+            canvas.create_line(100, 500, 200, 500)
+            canvas.create_line(250, 200, 250, 250)
+        if len(ranuser1) == 6:
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+            canvas.create_line(100, 300, 200, 200)
+            canvas.create_line(100, 500, 200, 500)
+            canvas.create_line(250, 200, 250, 250)
+            canvas.create_oval(235, 250, 265, 290)
+        if len(ranuser1) == 7:
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+            canvas.create_line(100, 300, 200, 200)
+            canvas.create_line(100, 500, 200, 500)
+            canvas.create_line(250, 200, 250, 250)
+            canvas.create_oval(235, 250, 265, 290)
+            canvas.create_oval(210, 290, 290, 380)
+        if len(ranuser1) == 8:
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+            canvas.create_line(100, 300, 200, 200)
+            canvas.create_line(100, 500, 200, 500)
+            canvas.create_line(250, 200, 250, 250)
+            canvas.create_oval(235, 250, 265, 290)
+            canvas.create_oval(210, 290, 290, 380)
+            canvas.create_line(180, 270, 214, 320)
+        if len(ranuser1) == 9:
+            width = 550
+            height = 300
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+            canvas.create_line(100, 300, 200, 200)
+            canvas.create_line(100, 500, 200, 500)
+            canvas.create_line(250, 200, 250, 250)
+            canvas.create_oval(235, 250, 265, 290)
+            canvas.create_oval(210, 290, 290, 380)
+            canvas.create_line(180, 270, 214, 320)
+            canvas.create_line(290, 320, 325, 275)
+            canvas.create_text(width // 2, height // 2, text='Try harder !!! Is gemakkelijk ', font=('Arial Bold', 22),
+                               fill='red')
+        if len(ranuser1) == 10:
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+            canvas.create_line(100, 300, 200, 200)
+            canvas.create_line(100, 500, 200, 500)
+            canvas.create_line(250, 200, 250, 250)
+            canvas.create_oval(235, 250, 265, 290)
+            canvas.create_oval(210, 290, 290, 380)
+            canvas.create_line(180, 270, 214, 320)
+            canvas.create_line(290, 320, 325, 275)
+            canvas.create_line(225, 370, 180, 420)
+        if len(ranuser1) == 11:
+            width = 550
+            height = 300
+            canvas.create_line(100, 200, 100, 500)
+            canvas.create_line(100, 200, 300, 200)
+            canvas.create_line(100, 300, 200, 200)
+            canvas.create_line(100, 500, 200, 500)
+            canvas.create_line(250, 200, 250, 250)
+            canvas.create_oval(235, 250, 265, 290)
+            canvas.create_oval(210, 290, 290, 380)
+            canvas.create_line(180, 270, 214, 320)
+            canvas.create_line(290, 320, 325, 275)
+            canvas.create_line(225, 370, 180, 420)
+            canvas.create_line(275, 370, 315, 420)
+            canvas.create_text(width // 2, height // 2, text='Game Over', font=('Arial Bold', 32), fill='red')
+        root.mainloop()
+
+    if len(ranuser1) == 11:
+        print('The word was', ranword, '   !!!!!!! gemakkelijk !!!!!!!!!!')
+        break
